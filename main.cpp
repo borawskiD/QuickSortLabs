@@ -1,4 +1,3 @@
-#include <cstdlib>
 #include <iomanip>
 #include <iostream>
 #include <random>
@@ -71,8 +70,8 @@ int main() {
     }
     std::cout << std::endl;
     quicksort(tab, 0, n - 1);
-
-    std::cout << "After quicksort algorithm: \n";
+    std::cout<<"---\n";
+    std::cout << "\nAfter quicksort algorithm: \n";
 
     for(int i = 0; i < n; i++){
         std::cout << tab[i]<< " ";
@@ -81,3 +80,235 @@ int main() {
 
     return 0;
 }
+
+/*
+ * Dominik Borawski
+ * A1 215 IC
+ * QuickSort
+ */
+
+/*
+Before quicksort algorithm:
+86 39 84 15 97 77 49 73 75 4
+
+Aktualnie analizowana tablica: 86 39 84 15 97 77 49 73 75 4
+Wybrany piwot: 97
+Sprawdzę, czy moge przesunąć element tablicy o indeksie 0 (element < pivot):
+Tak, 86 < 97
+Tablica po przeniesieniu: 86 39 84 15 4 77 49 73 75 4
+
+Sprawdzę, czy moge przesunąć element tablicy o indeksie 1 (element < pivot):
+Tak, 39 < 97
+Tablica po przeniesieniu: 86 39 84 15 4 77 49 73 75 4
+
+Sprawdzę, czy moge przesunąć element tablicy o indeksie 2 (element < pivot):
+Tak, 84 < 97
+Tablica po przeniesieniu: 86 39 84 15 4 77 49 73 75 4
+
+Sprawdzę, czy moge przesunąć element tablicy o indeksie 3 (element < pivot):
+Tak, 15 < 97
+Tablica po przeniesieniu: 86 39 84 15 4 77 49 73 75 4
+
+Sprawdzę, czy moge przesunąć element tablicy o indeksie 4 (element < pivot):
+Tak, 4 < 97
+Tablica po przeniesieniu: 86 39 84 15 4 77 49 73 75 4
+
+Sprawdzę, czy moge przesunąć element tablicy o indeksie 5 (element < pivot):
+Tak, 77 < 97
+Tablica po przeniesieniu: 86 39 84 15 4 77 49 73 75 4
+
+Sprawdzę, czy moge przesunąć element tablicy o indeksie 6 (element < pivot):
+Tak, 49 < 97
+Tablica po przeniesieniu: 86 39 84 15 4 77 49 73 75 4
+
+Sprawdzę, czy moge przesunąć element tablicy o indeksie 7 (element < pivot):
+Tak, 73 < 97
+Tablica po przeniesieniu: 86 39 84 15 4 77 49 73 75 4
+
+Sprawdzę, czy moge przesunąć element tablicy o indeksie 8 (element < pivot):
+Tak, 75 < 97
+Tablica po przeniesieniu: 86 39 84 15 4 77 49 73 75 4
+
+Przenoszenie zakończone, zatem czas podzielić i posortować tablicę:
+Przywracam piwot z powrotem na swoje miejsce, tj. pomiędzy liczby niższe od piwota a wyższe bądź równe.
+4<->97
+
+Wygląd tablicy przed (kolejnym) iteracyjnym podzieleniem: 86 39 84 15 4 77 49 73 75 97
+
+Czy możliwe jest posortowanie lewej części tablicy?
+Tak, jest to możliwe. Wykonanie:
+
+
+Aktualnie analizowana tablica: 86 39 84 15 4 77 49 73 75
+Wybrany piwot: 4
+Sprawdzę, czy moge przesunąć element tablicy o indeksie 0 (element < pivot):
+Nie, 86 >= 4
+
+Sprawdzę, czy moge przesunąć element tablicy o indeksie 1 (element < pivot):
+Nie, 39 >= 4
+
+Sprawdzę, czy moge przesunąć element tablicy o indeksie 2 (element < pivot):
+Nie, 84 >= 4
+
+Sprawdzę, czy moge przesunąć element tablicy o indeksie 3 (element < pivot):
+Nie, 15 >= 4
+
+Sprawdzę, czy moge przesunąć element tablicy o indeksie 4 (element < pivot):
+Nie, 75 >= 4
+
+Sprawdzę, czy moge przesunąć element tablicy o indeksie 5 (element < pivot):
+Nie, 77 >= 4
+
+Sprawdzę, czy moge przesunąć element tablicy o indeksie 6 (element < pivot):
+Nie, 49 >= 4
+
+Sprawdzę, czy moge przesunąć element tablicy o indeksie 7 (element < pivot):
+Nie, 73 >= 4
+
+Przenoszenie zakończone, zatem czas podzielić i posortować tablicę:
+Przywracam piwot z powrotem na swoje miejsce, tj. pomiędzy liczby niższe od piwota a wyższe bądź równe.
+86<->4
+
+Wygląd tablicy przed (kolejnym) iteracyjnym podzieleniem: 4 39 84 15 75 77 49 73 86 97
+
+Czy możliwe jest posortowanie lewej części tablicy?
+Nie, nie jest to możliwe.
+
+Czy możliwe jest posortowanie prawej części tablicy?
+Tak, jest to możliwe. Wykonanie:
+
+
+Aktualnie analizowana tablica: 39 84 15 75 77 49 73 86
+Wybrany piwot: 75
+Sprawdzę, czy moge przesunąć element tablicy o indeksie 1 (element < pivot):
+Tak, 39 < 75
+Tablica po przeniesieniu: 39 84 15 86 77 49 73 86
+
+Sprawdzę, czy moge przesunąć element tablicy o indeksie 2 (element < pivot):
+Nie, 84 >= 75
+
+Sprawdzę, czy moge przesunąć element tablicy o indeksie 3 (element < pivot):
+Tak, 15 < 75
+Tablica po przeniesieniu: 39 15 84 86 77 49 73 86
+
+Sprawdzę, czy moge przesunąć element tablicy o indeksie 4 (element < pivot):
+Nie, 86 >= 75
+
+Sprawdzę, czy moge przesunąć element tablicy o indeksie 5 (element < pivot):
+Nie, 77 >= 75
+
+Sprawdzę, czy moge przesunąć element tablicy o indeksie 6 (element < pivot):
+Tak, 49 < 75
+Tablica po przeniesieniu: 39 15 49 86 77 84 73 86
+
+Sprawdzę, czy moge przesunąć element tablicy o indeksie 7 (element < pivot):
+Tak, 73 < 75
+Tablica po przeniesieniu: 39 15 49 73 77 84 86 86
+
+Przenoszenie zakończone, zatem czas podzielić i posortować tablicę:
+Przywracam piwot z powrotem na swoje miejsce, tj. pomiędzy liczby niższe od piwota a wyższe bądź równe.
+77<->75
+
+Wygląd tablicy przed (kolejnym) iteracyjnym podzieleniem: 4 39 15 49 73 75 84 86 77 97
+
+Czy możliwe jest posortowanie lewej części tablicy?
+Tak, jest to możliwe. Wykonanie:
+
+
+Aktualnie analizowana tablica: 39 15 49 73
+Wybrany piwot: 15
+Sprawdzę, czy moge przesunąć element tablicy o indeksie 1 (element < pivot):
+Nie, 39 >= 15
+
+Sprawdzę, czy moge przesunąć element tablicy o indeksie 2 (element < pivot):
+Nie, 73 >= 15
+
+Sprawdzę, czy moge przesunąć element tablicy o indeksie 3 (element < pivot):
+Nie, 49 >= 15
+
+Przenoszenie zakończone, zatem czas podzielić i posortować tablicę:
+Przywracam piwot z powrotem na swoje miejsce, tj. pomiędzy liczby niższe od piwota a wyższe bądź równe.
+39<->15
+
+Wygląd tablicy przed (kolejnym) iteracyjnym podzieleniem: 4 15 73 49 39 75 84 86 77 97
+
+Czy możliwe jest posortowanie lewej części tablicy?
+Nie, nie jest to możliwe.
+
+Czy możliwe jest posortowanie prawej części tablicy?
+Tak, jest to możliwe. Wykonanie:
+
+
+Aktualnie analizowana tablica: 73 49 39
+Wybrany piwot: 49
+Sprawdzę, czy moge przesunąć element tablicy o indeksie 2 (element < pivot):
+Nie, 73 >= 49
+
+Sprawdzę, czy moge przesunąć element tablicy o indeksie 3 (element < pivot):
+Tak, 39 < 49
+Tablica po przeniesieniu: 39 73 39
+
+Przenoszenie zakończone, zatem czas podzielić i posortować tablicę:
+Przywracam piwot z powrotem na swoje miejsce, tj. pomiędzy liczby niższe od piwota a wyższe bądź równe.
+73<->49
+
+Wygląd tablicy przed (kolejnym) iteracyjnym podzieleniem: 4 15 39 49 73 75 84 86 77 97
+
+Czy możliwe jest posortowanie lewej części tablicy?
+Nie, nie jest to możliwe.
+
+Czy możliwe jest posortowanie prawej części tablicy?
+Nie, nie jest to możliwe.
+
+Czy możliwe jest posortowanie prawej części tablicy?
+Tak, jest to możliwe. Wykonanie:
+
+
+Aktualnie analizowana tablica: 84 86 77
+Wybrany piwot: 86
+Sprawdzę, czy moge przesunąć element tablicy o indeksie 6 (element < pivot):
+Tak, 84 < 86
+Tablica po przeniesieniu: 84 77 77
+
+Sprawdzę, czy moge przesunąć element tablicy o indeksie 7 (element < pivot):
+Tak, 77 < 86
+Tablica po przeniesieniu: 84 77 77
+
+Przenoszenie zakończone, zatem czas podzielić i posortować tablicę:
+Przywracam piwot z powrotem na swoje miejsce, tj. pomiędzy liczby niższe od piwota a wyższe bądź równe.
+77<->86
+
+Wygląd tablicy przed (kolejnym) iteracyjnym podzieleniem: 4 15 39 49 73 75 84 77 86 97
+
+Czy możliwe jest posortowanie lewej części tablicy?
+Tak, jest to możliwe. Wykonanie:
+
+
+Aktualnie analizowana tablica: 84 77
+Wybrany piwot: 84
+Sprawdzę, czy moge przesunąć element tablicy o indeksie 6 (element < pivot):
+Tak, 77 < 84
+Tablica po przeniesieniu: 77 77
+
+Przenoszenie zakończone, zatem czas podzielić i posortować tablicę:
+Przywracam piwot z powrotem na swoje miejsce, tj. pomiędzy liczby niższe od piwota a wyższe bądź równe.
+77<->84
+
+Wygląd tablicy przed (kolejnym) iteracyjnym podzieleniem: 4 15 39 49 73 75 77 84 86 97
+
+Czy możliwe jest posortowanie lewej części tablicy?
+Nie, nie jest to możliwe.
+
+Czy możliwe jest posortowanie prawej części tablicy?
+Nie, nie jest to możliwe.
+
+Czy możliwe jest posortowanie prawej części tablicy?
+Nie, nie jest to możliwe.
+
+Czy możliwe jest posortowanie prawej części tablicy?
+Nie, nie jest to możliwe.
+---
+
+After quicksort algorithm:
+4 15 39 49 73 75 77 84 86 97
+ */
